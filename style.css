@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+    color: blue;
+}
+
+.button{
+    text-align: center;
+    color: blue;
+    align-items: center;
+}
+
+button{
+    color: blue;
+    border-color: blue;
+    text-align: center;
+}
