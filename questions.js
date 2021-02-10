@@ -1,9 +1,10 @@
-// list of all questions, choices, and answers
+// Defining questions variable in an object 
+
 var questions = [
     {
         title: "An array starts at index of 0" 
         choices: [
-            "True"
+            "True",
             "False"
         ]
         answer: "True" 
@@ -11,9 +12,9 @@ var questions = [
     {
         title: "Math.Random() will return:"
         choices: [
-            "A number less than 1"
-            "A number greater than 1"
-            "Any random integer"
+            "A number less than 1",
+            "A number greater than 1",
+            "Any random integer",
             "Any random number"
         ]
         answer: "A number less than 1"
@@ -21,9 +22,9 @@ var questions = [
     {
         title: "While using a switch statement, the ___ will stop the block of code from being executed"
         choices: [
-            "break"
-            "return"
-            "for-loop"
+            "break",
+            "return",
+            "for-loop",
             "boolean"
         ]
         answer: "break"
@@ -31,9 +32,9 @@ var questions = [
     {
         title: "A JavaScript for-loop is effective if you want to"
         choices: [
-            "Run the same block of code over and over again"
-            "Compare values"
-            "Return an object when a button is clicked"
+            "Run the same block of code over and over again",
+            "Compare values",
+            "Return an object when a button is clicked",
             "Style a webpage"
         ]
         answer: "Run the same block of code over and over again"
@@ -41,10 +42,10 @@ var questions = [
     {
         title: "JavaScript objects:"
         choices: [
-            "are variables"
-            "Store many values"
-            "Are stored inside of curly brackets"
-            "All of the above"
+            "are variables",
+            "Store many values",
+            "Are stored inside of curly brackets",
+            "All of the above",
         answer: "All of the above"
     },
 ]

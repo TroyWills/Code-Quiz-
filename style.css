@@ -14,3 +14,8 @@ button{
     border-color: blue;
     text-align: center;
 }
+
+.hide{
+    display: none;
+}
+
