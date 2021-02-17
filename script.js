@@ -1,5 +1,5 @@
 // variables for elements
-var startButton = document.querySelector("#demo")
+var startButton = document.querySelector("#quizBtn")
 var questionsDiv = document.getElementById("questions")
 var questions = [
     {
@@ -54,21 +54,34 @@ var questions = [
 
 // function that runs quiz questions
 function startQuiz(){
-    console.log(questions);
 // hide the start screen
-var startScreen = document.getElementById("startScreen")
-startScreen.setAttribute("class","hide")
-// unhides the class to display questions
-questionsDiv.removeAttribute("class")
+var startScreen = document.getElementById("startScreen");
+startScreen.setAttribute("class","hide");
+questionsDiv.removeAttribute("class");
 
-for (i = 0; i < questions.length; i++) {
-    var questionTitle = questions[i].title
-    var titleHeading = questionsDiv.appendChild("h2") // read docs on append child to get to work in console (innertext/ innerhtml <-- similiar to append child)
-    titleHeading.value = questionTitle
-}
+    // what question we are going to print to the UI
+    // targeting the H2 element for title to print 
+    // targeting the UL element for choices to print 
+    // print the question to the targeted H2 *since the questions is a variable do not have to make a string* <-- when referring to textContent documentation
+
+ for (i = 0; i < questions.length; i++) {
+    var currentQuestion = questions[i];
+    var title = document.getElementById("title");
+    var choiceBox = document.getElementById("choices");
+    var choices = [];
+    title.textContent = currentQuestion.title;
+
+    // choices.innerHTML = "";  <-- clears any prior HTML content 
+    // create another for loop to display the questions as selectable buttons
+
+    for (i = 0; i < currentQuestion.choices.length; i++) {
+        choices.push(currentQuestion.choices[i]);
+    }
+        console.log(choices);
+ } 
 
 // input timer & display (set interval)
-};
+};  
 
 // starts quiz when button is clicked 
 startButton.addEventListener("click", startQuiz);
