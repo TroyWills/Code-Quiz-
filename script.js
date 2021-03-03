@@ -67,35 +67,28 @@ function grabQuestion(){
     var currentQuestion = questions[questionNumber];
     
     // create array to hold answers 
-    let answers = [];
-
-    answers = currentQuestion.choices;
+    let answers = currentQuestion.choices;
 
     // print the title of the current question to the h2
     questionTitle.innerText = currentQuestion.title;
-    // print the choices to the choiceList variable
-    // choicesList.innerText = currentQuestion.choices;
-    // use map method to wrap each answer in button
-    let answersHTML = answers.map(answer => `<button class = "button">${answer}</button>`);
-    // write the possible answers to the UI wrapped in button
-    choicesList.innerHTML = answersHTML;
-    // use event delegation to handle dynamic HTML button as any click in the body advances to next question
-    document.addEventListener("click", function(e){
-        console.log(e.target);
-        // if user does not click on button do not proceed to next question
-        // if = e.target.innerText 
-        if (e.target.innerText === currentQuestion.answer){
-            console.log("Correct!");
-            answers.push("Correct");
-            console.log(answers);
-        }
-        else{
-            console.log("Wrong!");
-        }
-        // // push the targeted element into the answers array in global variables
-        // else (e.target = button)
-        //     // if e.target = button move onto next question
-    })
+
+    currentQuestion.choices.forEach((choice) => {
+        // Create a button dynamically for each choice 
+        var choiceButton = document.createElement("button");
+        // Setting attribute for Button so we can store which button user selected 
+        choiceButton.setAttribute("value", choice);
+        // Put answer choices inside of button 
+        choiceButton.textContent = choice;
+        // Create event listener to check answers & move onto next question when button is clicked 
+        choiceButton.onclick = checkAnswer;
+        // display the button on the page
+        choicesList.appendChild(choiceButton);
+    });
+
+
+// Declare function to check user answer 
+function checkAnswer() {
+    console.log("Im checking the anwser");
 }
 
 // function that runs quiz questions
