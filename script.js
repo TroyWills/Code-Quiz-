@@ -61,8 +61,14 @@ var questions = [
     },
 ]
 
+
 // write a function that grabs the current question at index 0
-function grabQuestion(){
+function grabQuestion() {
+    // Clear out previous questions 
+    questionTitle.innerText = "";
+    // Clear out previous answers (maybe innerHTML)
+    choicesList.innerText = ""; 
+
     // variable that will grab the current question in the array we are working on
     var currentQuestion = questions[questionNumber];
     
@@ -79,20 +85,22 @@ function grabQuestion(){
         choiceButton.setAttribute("value", choice);
         // Put answer choices inside of button 
         choiceButton.textContent = choice;
-        // Create event listener to check answers & move onto next question when button is clicked 
+        // Event listener to check answers 
         choiceButton.onclick = checkAnswer;
         // display the button on the page
         choicesList.appendChild(choiceButton);
+        // move onto next question upon user input 
     });
-
+}
 
 // Declare function to check user answer 
 function checkAnswer() {
     console.log("Im checking the anwser");
+    // *last thing* - increment the question number by +1 (move onto next iteration), questionNumber++ -- then 
 }
 
 // function that runs quiz questions
-function startQuiz(){
+function startQuiz() {
 
     // input timer & display (set interval)
 
