@@ -3,9 +3,18 @@ var startButton = document.querySelector("#quizBtn");
 var questionsDiv = document.getElementById("questions");
 var choicesList = document.getElementById("choicesList");
 var questionTitle = document.getElementById("title");
+var timer = document.getElementById("timer");
+var gameOver = document.getElementById("gameOver");
+var finalScore = document.getElementById("finalScore");
 
 // store answers in an empty array
 var userInput = [];
+
+// Global variable to keep track of user score
+var correctAnswer = 0;
+
+// Declaring variable for how much time user has left 
+var timeLeft = 60;
 
 // variable to classify first question 
 var questionNumber = 0
@@ -13,7 +22,7 @@ var questionNumber = 0
 var questions = [
     {
         title: "An array starts at index of 0",
-        choices: [
+        choices: [ 
             "True",
             "False"
         ],
@@ -95,15 +104,52 @@ function grabQuestion() {
 
 // Declare function to check user answer 
 function checkAnswer() {
-    console.log("Im checking the anwser");
-    // *last thing* - increment the question number by +1 (move onto next iteration), questionNumber++ -- then 
+    var currentQuestion = questions[questionNumber];
+    if(this.value === currentQuestion.answer) {
+        correctAnswer++;
+    }
+    else {
+        // reduce time if wrong answer
+        timeLeft = timeLeft-5;
+    }
+    // increase quesiton number by +1
+    questionNumber++
+    // check to see whether there is any questions left in the game
+    if (questionNumber === questions.length) {
+        // if there are no questions left, run the end game function 
+        endGame();
+    }
+    // if quesitons left, grab that question
+    else {
+        grabQuestion();
+    }
 }
 
-// function that runs quiz questions
-function startQuiz() {
+function endGame() {
+    // Display final score 
+    finalScore.innerText = correctAnswer;
+    // Display game over message when the clock hits 0, and display the user score
+    gameOver.removeAttribute("class");
+};
 
-    // input timer & display (set interval)
+// Start the clock when the StartQuiz function executes
+function startClock() {
+    // stop the clock at 0
+    if (timeLeft === 0) {
+        endGame();
+    }
+    // Display Time 
+    timer.innerText = timeLeft;
+    // Reduce time left by 1
+    timeLeft--;
+};
 
+
+    // function that runs quiz questions
+    function startQuiz() {
+    // start the clock 
+    setInterval(startClock, 1000);
+    
     // hide the start screen
     var startScreen = document.getElementById("startScreen");
     startScreen.setAttribute("class","hide");
