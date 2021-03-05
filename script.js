@@ -13,7 +13,7 @@ var userInput = [];
 // Global variable to keep track of user score
 var correctAnswer = 0;
 
-// Declaring variable for how much time user has left 
+// Setting the quiz time to 60 seconds
 var timeLeft = 60;
 
 // variable to classify first question 
@@ -130,6 +130,8 @@ function endGame() {
     finalScore.innerText = correctAnswer;
     // Display game over message when the clock hits 0, and display the user score
     gameOver.removeAttribute("class");
+    timer.setAttribute("class","hide");
+    questionsDiv.setAttribute("class", "hide");
 };
 
 // Start the clock when the StartQuiz function executes
