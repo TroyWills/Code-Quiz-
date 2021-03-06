@@ -1,6 +1,7 @@
 h1{
     text-align: center;
     color: blue;
+    font-size: 3em;
 }
 
 #quizBtn{
@@ -8,6 +9,8 @@ h1{
     color: blue;
     align-items: center;
     display: inline-block;
+    font-size: 1.5em;
+    padding: 5px;
 }
 
 #button{
@@ -24,3 +27,47 @@ h2{
     color: black;
 }
 
+#gameover {
+    text-align: center;
+    font-size: 3em;
+    color: black;
+}
+
+#scoreDisplay {
+    text-align: center;
+    font-size: 2em;
+    color: black;
+}
+
+#title {
+    text-align: center;
+    font-size: 1.5em;
+    color: black;
+}
+
+#choices {
+    /* text-align: center; */
+    font-size: 1.5em;
+    /* color: black;
+    margin: 1px;
+    display: block; */
+    /* align-items: center; */
+}
+
+button {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border: 1px solid black;
+    font-size: 1em;
+    padding: 5px;
+} 
+
+#timer {
+    text-align: center;
+    font-size: 2.5em;
+    color: red;
+    animation: blink 1s infinite;
+}

@@ -6,19 +6,21 @@ var questionTitle = document.getElementById("title");
 var timer = document.getElementById("timer");
 var gameOver = document.getElementById("gameOver");
 var finalScore = document.getElementById("finalScore");
+var percentCorrect = document.getElementById("percentCorrect");
 
 // store answers in an empty array
 var userInput = [];
 
-// Global variable to keep track of user score
+// Global variable to keep track of user score, sets the start point at 0
 var correctAnswer = 0;
 
-// Setting the quiz time to 60 seconds
+// Setting the quiz start time to 60 seconds
 var timeLeft = 60;
 
-// variable to classify first question 
+// variable to classify first question starting at index 0 
 var questionNumber = 0
 
+// Quiz questions 
 var questions = [
     {
         title: "An array starts at index of 0",
@@ -71,22 +73,23 @@ var questions = [
 ]
 
 
-// write a function that grabs the current question at index 0
+// Function to grab the current question starting at index 0 
 function grabQuestion() {
     // Clear out previous questions 
     questionTitle.innerText = "";
-    // Clear out previous answers (maybe innerHTML)
+    // Clear out previous answers 
     choicesList.innerText = ""; 
 
     // variable that will grab the current question in the array we are working on
     var currentQuestion = questions[questionNumber];
     
-    // create array to hold answers 
+    // array to hold answers 
     let answers = currentQuestion.choices;
 
     // print the title of the current question to the h2
     questionTitle.innerText = currentQuestion.title;
 
+    // For each function to loop through the quesiton choices
     currentQuestion.choices.forEach((choice) => {
         // Create a button dynamically for each choice 
         var choiceButton = document.createElement("button");
@@ -98,7 +101,6 @@ function grabQuestion() {
         choiceButton.onclick = checkAnswer;
         // display the button on the page
         choicesList.appendChild(choiceButton);
-        // move onto next question upon user input 
     });
 }
 
@@ -109,17 +111,17 @@ function checkAnswer() {
         correctAnswer++;
     }
     else {
-        // reduce time if wrong answer
+        // reduce time by 5 seconds if wrong answer
         timeLeft = timeLeft-5;
     }
-    // increase quesiton number by +1
+    // increase question number index by +1
     questionNumber++
     // check to see whether there is any questions left in the game
     if (questionNumber === questions.length) {
         // if there are no questions left, run the end game function 
         endGame();
     }
-    // if quesitons left, grab that question
+    // if there is a question left in the array, grab that question
     else {
         grabQuestion();
     }
@@ -130,19 +132,24 @@ function endGame() {
     finalScore.innerText = correctAnswer;
     // Display game over message when the clock hits 0, and display the user score
     gameOver.removeAttribute("class");
+    // Hides the timer and the current question displayed on page when game is over 
     timer.setAttribute("class","hide");
     questionsDiv.setAttribute("class", "hide");
+    // Calculate the percent of correct answers 
+    var percent = (correctAnswer / questions.length) * 100;
+    // Display the percent on page
+    percentCorrect.innerText = percent;
 };
 
 // Start the clock when the StartQuiz function executes
 function startClock() {
-    // stop the clock at 0
+    // stop the quiz if 0 seconds left
     if (timeLeft === 0) {
         endGame();
     }
-    // Display Time 
+    // Display Time on HTML
     timer.innerText = timeLeft;
-    // Reduce time left by 1
+    // Reduces the quiz time 
     timeLeft--;
 };
 
