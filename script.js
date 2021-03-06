@@ -11,7 +11,7 @@ var percentCorrect = document.getElementById("percentCorrect");
 // store answers in an empty array
 var userInput = [];
 
-// Global variable to keep track of user score, sets the start point at 0
+// Global variable to keep track of user score, setting the correct answers to 0 at start of quikz
 var correctAnswer = 0;
 
 // Setting the quiz start time to 60 seconds
